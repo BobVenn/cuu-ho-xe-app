@@ -1,59 +1,55 @@
-package com.example.appfirst;
+package com.example.appfirst; // Đổi lại đúng tên package ở dòng đầu tiên trong máy bạn
 
-import android.media.MediaPlayer;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.MediaController;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private VideoView videoView;
-    private Button btnPlay;
+    // Khai báo các biến giao diện
+    private EditText edtPhone, edtPassword;
+    private Button btnLogin;
+    private TextView tvRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // Gọi file XML vừa tạo
 
-        videoView = findViewById(R.id.videoView);
-        btnPlay = findViewById(R.id.btnPlay);
+        // Ánh xạ ID từ XML sang Java
+        edtPhone = findViewById(R.id.edtPhone);
+        edtPassword = findViewById(R.id.edtPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvRegister = findViewById(R.id.tvRegister);
 
-        // Tạo thanh điều khiển tua / tạm dừng video
-        MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(videoView);
-        videoView.setMediaController(mediaController);
-
-        // Bắt sự kiện bấm nút phát video
-        btnPlay.setOnClickListener(new View.OnClickListener() {
+        // Bắt sự kiện click nút Đăng nhập
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Đang tải video...", Toast.LENGTH_SHORT).show();
+                String phone = edtPhone.getText().toString().trim();
+                String password = edtPassword.getText().toString().trim();
 
-                String videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-                Uri uri = Uri.parse(videoUrl);
-                videoView.setVideoURI(uri);
+                if (phone.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Chỗ này sau sẽ ghép Firebase hoặc API để kiểm tra tài khoản
+                    Toast.makeText(MainActivity.this, "Đang đăng nhập với: " + phone, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-                // Tự động phát khi tải xong dữ liệu đệm
-                videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mp) {
-                        videoView.start();
-                    }
-                });
-
-                // Báo lỗi nếu mạng gặp sự cố
-                videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-                    @Override
-                    public boolean onError(MediaPlayer mp, int what, int extra) {
-                        Toast.makeText(MainActivity.this, "Không thể tải video, kiểm tra kết nối mạng!", Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                });
+        // Bắt sự kiện click nút Đăng ký (chuyển sang màn hình khác)
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Chuyển sang màn hình Đăng ký", Toast.LENGTH_SHORT).show();
+                // Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                // startActivity(intent);
             }
         });
     }
