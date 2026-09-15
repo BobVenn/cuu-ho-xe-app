@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <!-- Sent Message Bubble (Right) -->
+    <LinearLayout
+        android:id="@+id/llSentMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card"
+        android:backgroundTint="#D32F2F"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"
+        android:elevation="1dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nội dung tin nhắn gửi"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tvSentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00"
+            android:textColor="#FFEAEA"
+            android:textSize="11sp"
+            android:layout_gravity="end"
+            android:layout_marginTop="3dp"/>
+    </LinearLayout>
+
+    <!-- Received Message Bubble (Left) -->
+    <LinearLayout
+        android:id="@+id/llReceivedMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card"
+        android:backgroundTint="#E8ECEF"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"
+        android:elevation="1dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSenderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng đài Cứu hộ"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/tvReceivedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nội dung tin nhắn nhận"
+            android:textColor="#222222"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tvReceivedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00"
+            android:textColor="#666666"
+            android:textSize="11sp"
+            android:layout_gravity="end"
+            android:layout_marginTop="3dp"/>
+    </LinearLayout>
+
+</LinearLayout>

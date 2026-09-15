@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "890326989588",
+    "project_id": "cuu-ho-xe-ef502",
+    "storage_bucket": "cuu-ho-xe-ef502.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890326989588:android:a78385de9622d520362001",
+        "android_client_info": {
+          "package_name": "cuu_ho_xe_1.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAzKoHnVmg4LxsIPbrcbVu0G-n8aZNo7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890326989588:android:a78385de9622d520362001",
+        "android_client_info": {
+          "package_name": "com.example.appfirst"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAzKoHnVmg4LxsIPbrcbVu0G-n8aZNo7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

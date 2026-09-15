@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Top Header Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:elevation="3dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xin chào, Tài xế!"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#222222" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng đài hỗ trợ 24/7: 1900 6789"
+                android:textSize="14sp"
+                android:textColor="#D32F2F"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- Big Emergency Rescue Request Card -->
+        <LinearLayout
+            android:id="@+id/btnEmergencyRescue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:backgroundTint="#D32F2F"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center"
+            android:elevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🚨 CỨU HỘ KHẨN CẤP"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bấm để gửi vị trí &amp; gọi xe cứu hộ ngay"
+                android:textSize="14sp"
+                android:textColor="#FFEAEA"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- Service Options Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dịch vụ cứu hộ phổ biến"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Grid of Services -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:useDefaultMargins="true"
+            android:layout_marginBottom="16dp">
+
+            <!-- Service 1: Vá / Thay Lốp -->
+            <LinearLayout
+                android:id="@+id/btnServiceTire"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🛞"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vá / Thay Lốp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Service 2: Kích Bình Ắc Quy -->
+            <LinearLayout
+                android:id="@+id/btnServiceBattery"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔋"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kích Bình Ắc Quy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Service 3: Tiếp Nhiên Liệu -->
+            <LinearLayout
+                android:id="@+id/btnServiceFuel"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⛽"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giao Nhiên Liệu"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <!-- Service 4: Kéo Xe / Cẩu Xe -->
+            <LinearLayout
+                android:id="@+id/btnServiceTowing"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚜"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xe Kéo / Cẩu"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+</ScrollView>
