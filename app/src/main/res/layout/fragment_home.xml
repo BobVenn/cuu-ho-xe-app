@@ -46,13 +46,16 @@
                     android:textColor="#1E293B" />
 
                 <TextView
+                    android:id="@+id/tvHotline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hotline 24/7: 1900 6789"
+                    android:text="📞 Hotline 24/7: 0898212031"
                     android:textSize="13sp"
                     android:textColor="#DC2626"
                     android:textStyle="bold"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="3dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
             </LinearLayout>
         </LinearLayout>
 

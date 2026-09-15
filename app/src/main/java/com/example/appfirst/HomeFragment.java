@@ -1,6 +1,7 @@
 package com.example.appfirst;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         tvWelcome = view.findViewById(R.id.tvWelcome);
+        TextView tvHotline = view.findViewById(R.id.tvHotline);
         LinearLayout btnEmergencyRescue = view.findViewById(R.id.btnEmergencyRescue);
         LinearLayout btnServiceTire = view.findViewById(R.id.btnServiceTire);
         LinearLayout btnServiceBattery = view.findViewById(R.id.btnServiceBattery);
@@ -36,6 +38,14 @@ public class HomeFragment extends Fragment {
         LinearLayout btnServiceTowing = view.findViewById(R.id.btnServiceTowing);
 
         loadUserData();
+
+        if (tvHotline != null) {
+            tvHotline.setOnClickListener(v -> {
+                Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+                dialIntent.setData(Uri.parse("tel:0898212031"));
+                startActivity(dialIntent);
+            });
+        }
 
         btnEmergencyRescue.setOnClickListener(v -> openRequestRescue("Khẩn cấp / Tai nạn"));
         btnServiceTire.setOnClickListener(v -> openRequestRescue("Vá / Thay Lốp"));
