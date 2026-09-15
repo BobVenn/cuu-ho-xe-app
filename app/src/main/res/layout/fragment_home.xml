@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F6F8">
+    android:background="#F8FAFC">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,29 +14,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:orientation="vertical"
+            android:background="@drawable/bg_card_modern"
+            android:orientation="horizontal"
             android:padding="20dp"
-            android:elevation="3dp"
-            android:layout_marginBottom="20dp">
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="18dp">
 
             <TextView
-                android:id="@+id/tvWelcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Xin chào, Tài xế!"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#222222" />
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_status_in_progress"
+                android:gravity="center"
+                android:text="👤"
+                android:textSize="22sp"
+                android:layout_marginEnd="14dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Tổng đài hỗ trợ 24/7: 1900 6789"
-                android:textSize="14sp"
-                android:textColor="#D32F2F"
-                android:textStyle="bold"
-                android:layout_marginTop="6dp"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xin chào, Tài xế!"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotline 24/7: 1900 6789"
+                    android:textSize="13sp"
+                    android:textColor="#DC2626"
+                    android:textStyle="bold"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Big Emergency Rescue Request Card -->
@@ -44,12 +61,11 @@
             android:id="@+id/btnEmergencyRescue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:backgroundTint="#D32F2F"
+            android:background="@drawable/bg_card_emergency"
             android:orientation="vertical"
             android:padding="24dp"
             android:gravity="center"
-            android:elevation="4dp"
+            android:elevation="8dp"
             android:clickable="true"
             android:focusable="true"
             android:layout_marginBottom="24dp">
@@ -57,17 +73,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🚨 CỨU HỘ KHẨN CẤP"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF" />
+                android:text="🚨"
+                android:textSize="36sp"
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bấm để gửi vị trí &amp; gọi xe cứu hộ ngay"
-                android:textSize="14sp"
-                android:textColor="#FFEAEA"
+                android:text="CỨU HỘ KHẨN CẤP"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:letterSpacing="0.03" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bấm để tự động định vị &amp; gọi cứu hộ ngay"
+                android:textSize="13sp"
+                android:textColor="#FEF2F2"
                 android:layout_marginTop="6dp"/>
         </LinearLayout>
 
@@ -78,7 +102,7 @@
             android:text="Dịch vụ cứu hộ phổ biến"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:textColor="#333333"
+            android:textColor="#1E293B"
             android:layout_marginBottom="12dp" />
 
         <!-- Grid of Services -->
@@ -94,13 +118,13 @@
             <LinearLayout
                 android:id="@+id/btnServiceTire"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_card_modern"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="12dp"
-                android:elevation="2dp"
+                android:elevation="3dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -108,28 +132,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🛞"
-                    android:textSize="30sp"/>
+                    android:textSize="32sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vá / Thay Lốp"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
+                    android:textColor="#334155"
+                    android:layout_marginTop="6dp"/>
             </LinearLayout>
 
             <!-- Service 2: Kích Bình Ắc Quy -->
             <LinearLayout
                 android:id="@+id/btnServiceBattery"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_card_modern"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="12dp"
-                android:elevation="2dp"
+                android:elevation="3dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -137,28 +161,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🔋"
-                    android:textSize="30sp"/>
+                    android:textSize="32sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kích Bình Ắc Quy"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
+                    android:textColor="#334155"
+                    android:layout_marginTop="6dp"/>
             </LinearLayout>
 
             <!-- Service 3: Tiếp Nhiên Liệu -->
             <LinearLayout
                 android:id="@+id/btnServiceFuel"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_card_modern"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="12dp"
-                android:elevation="2dp"
+                android:elevation="3dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -166,28 +190,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="⛽"
-                    android:textSize="30sp"/>
+                    android:textSize="32sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Giao Nhiên Liệu"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
+                    android:textColor="#334155"
+                    android:layout_marginTop="6dp"/>
             </LinearLayout>
 
             <!-- Service 4: Kéo Xe / Cẩu Xe -->
             <LinearLayout
                 android:id="@+id/btnServiceTowing"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_columnWeight="1"
-                android:background="@drawable/bg_card"
+                android:background="@drawable/bg_card_modern"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="12dp"
-                android:elevation="2dp"
+                android:elevation="3dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -195,15 +219,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🚜"
-                    android:textSize="30sp"/>
+                    android:textSize="32sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Xe Kéo / Cẩu"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
+                    android:textColor="#334155"
+                    android:layout_marginTop="6dp"/>
             </LinearLayout>
 
         </GridLayout>

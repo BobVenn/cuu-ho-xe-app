@@ -1,15 +1,24 @@
 package com.example.appfirst;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,7 +31,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -32,16 +44,24 @@ import java.util.Map;
 public class RequestRescueActivity extends AppCompatActivity {
 
     private static final int LOCATION_PERMISSION_REQ_CODE = 1001;
+    private static final int CAMERA_PERMISSION_REQ_CODE = 1002;
 
     private Spinner spServiceType;
     private EditText edtLocation, edtContactPhone, edtNote;
-    private Button btnGetLocation, btnSubmitRescue, btnCancel;
+    private ImageView imgRescuePhoto;
+    private Button btnGetLocation, btnTakePhoto, btnChooseGallery, btnSubmitRescue, btnCancel;
 
     private DatabaseReference mDatabase;
     private FusedLocationProviderClient fusedLocationClient;
 
     private double currentLatitude = 0.0;
     private double currentLongitude = 0.0;
+
+    private Bitmap selectedBitmap = null;
+    private Uri selectedImageUri = null;
+
+    private ActivityResultLauncher<Intent> cameraLauncher;
+    private ActivityResultLauncher<Intent> galleryLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +75,14 @@ public class RequestRescueActivity extends AppCompatActivity {
         edtLocation = findViewById(R.id.edtLocation);
         edtContactPhone = findViewById(R.id.edtContactPhone);
         edtNote = findViewById(R.id.edtNote);
+        imgRescuePhoto = findViewById(R.id.imgRescuePhoto);
         btnGetLocation = findViewById(R.id.btnGetLocation);
+        btnTakePhoto = findViewById(R.id.btnTakePhoto);
+        btnChooseGallery = findViewById(R.id.btnChooseGallery);
         btnSubmitRescue = findViewById(R.id.btnSubmitRescue);
         btnCancel = findViewById(R.id.btnCancel);
+
+        setupLaunchers();
 
         String[] services = {
             "Khẩn cấp / Tai nạn",
@@ -83,8 +108,51 @@ public class RequestRescueActivity extends AppCompatActivity {
         }
 
         btnGetLocation.setOnClickListener(v -> checkPermissionAndGetLocation());
+        btnTakePhoto.setOnClickListener(v -> checkCameraPermissionAndOpen());
+        btnChooseGallery.setOnClickListener(v -> openGallery());
         btnSubmitRescue.setOnClickListener(v -> submitRescueRequest());
         btnCancel.setOnClickListener(v -> finish());
+    }
+
+    private void setupLaunchers() {
+        cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                Bitmap photo = (Bitmap) result.getData().getExtras().get("data");
+                if (photo != null) {
+                    selectedBitmap = photo;
+                    selectedImageUri = null;
+                    imgRescuePhoto.setImageBitmap(photo);
+                    imgRescuePhoto.setPadding(0, 0, 0, 0);
+                    imgRescuePhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                }
+            }
+        });
+
+        galleryLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                selectedImageUri = result.getData().getData();
+                if (selectedImageUri != null) {
+                    selectedBitmap = null;
+                    imgRescuePhoto.setImageURI(selectedImageUri);
+                    imgRescuePhoto.setPadding(0, 0, 0, 0);
+                    imgRescuePhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                }
+            }
+        });
+    }
+
+    private void checkCameraPermissionAndOpen() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQ_CODE);
+        } else {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            cameraLauncher.launch(takePictureIntent);
+        }
+    }
+
+    private void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        galleryLauncher.launch(galleryIntent);
     }
 
     private void checkPermissionAndGetLocation() {
@@ -166,6 +234,13 @@ public class RequestRescueActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Bạn cần cấp quyền vị trí để ứng dụng tự lấy địa chỉ!", Toast.LENGTH_LONG).show();
             }
+        } else if (requestCode == CAMERA_PERMISSION_REQ_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraLauncher.launch(takePictureIntent);
+            } else {
+                Toast.makeText(this, "Cần cấp quyền camera để chụp ảnh sự cố!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -181,12 +256,19 @@ public class RequestRescueActivity extends AppCompatActivity {
         }
 
         btnSubmitRescue.setEnabled(false);
-        Toast.makeText(this, "Đang gửi yêu cầu tới Firebase...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Đang gửi yêu cầu & hình ảnh lên...", Toast.LENGTH_SHORT).show();
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String userId = currentUser != null ? currentUser.getUid() : "ANONYMOUS";
 
         String requestId = mDatabase.child("rescue_requests").push().getKey();
+
+        if (requestId == null) {
+            btnSubmitRescue.setEnabled(true);
+            return;
+        }
+
+        String photoBase64 = getPhotoBase64String();
 
         Map<String, Object> requestData = new HashMap<>();
         requestData.put("requestId", requestId);
@@ -197,22 +279,42 @@ public class RequestRescueActivity extends AppCompatActivity {
         requestData.put("longitude", currentLongitude);
         requestData.put("contactPhone", phone);
         requestData.put("note", note);
+        requestData.put("photoBase64", photoBase64);
         requestData.put("status", "PENDING");
         requestData.put("timestamp", System.currentTimeMillis());
 
-        if (requestId != null) {
-            mDatabase.child("rescue_requests").child(requestId).setValue(requestData)
-                .addOnCompleteListener(task -> {
-                    btnSubmitRescue.setEnabled(true);
-                    if (task.isSuccessful()) {
-                        Toast.makeText(RequestRescueActivity.this, "Gửi yêu cầu thành công! Đội cứu hộ đang tiếp nhận.", Toast.LENGTH_LONG).show();
-                        finish();
-                    } else {
-                        Toast.makeText(RequestRescueActivity.this, "Gửi yêu cầu thất bại. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-        } else {
-            btnSubmitRescue.setEnabled(true);
+        mDatabase.child("rescue_requests").child(requestId).setValue(requestData)
+            .addOnCompleteListener(task -> {
+                btnSubmitRescue.setEnabled(true);
+                if (task.isSuccessful()) {
+                    Toast.makeText(RequestRescueActivity.this, "Gửi yêu cầu & ảnh hiện trường thành công!", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(RequestRescueActivity.this, "Gửi yêu cầu thất bại. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                }
+            });
+    }
+
+    private String getPhotoBase64String() {
+        try {
+            Bitmap bitmap = null;
+            if (selectedBitmap != null) {
+                bitmap = selectedBitmap;
+            } else if (selectedImageUri != null) {
+                InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+            }
+
+            if (bitmap != null) {
+                Bitmap resized = Bitmap.createScaledBitmap(bitmap, 480, 480 * bitmap.getHeight() / bitmap.getWidth(), true);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                resized.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+                byte[] imageBytes = baos.toByteArray();
+                return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return "";
     }
 }

@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/bg_card"
-    android:padding="16dp"
-    android:elevation="2dp"
-    android:layout_marginBottom="12dp">
+    android:background="@drawable/bg_card_modern"
+    android:padding="18dp"
+    android:elevation="4dp"
+    android:layout_marginBottom="14dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/tvItemTitle"
@@ -19,18 +20,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dịch vụ Cứu hộ"
-            android:textSize="17sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#D32F2F"/>
+            android:textColor="#DC2626"/>
 
         <TextView
             android:id="@+id/tvItemStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đang chờ"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="#E65100"/>
+            android:background="@drawable/bg_status_pending"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="5dp"
+            android:textColor="#D97706"/>
     </LinearLayout>
 
     <TextView
@@ -39,8 +43,8 @@
         android:layout_height="wrap_content"
         android:text="📍 Vị trí:"
         android:textSize="14sp"
-        android:textColor="#444444"
-        android:layout_marginTop="8dp"/>
+        android:textColor="#334155"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/tvItemTime"
@@ -48,17 +52,17 @@
         android:layout_height="wrap_content"
         android:text="🕒 Thời gian:"
         android:textSize="13sp"
-        android:textColor="#888888"
+        android:textColor="#64748B"
         android:layout_marginTop="4dp"/>
 
     <ImageView
         android:id="@+id/imgItemPhoto"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:scaleType="centerCrop"
-        android:background="@drawable/bg_input"
-        android:contentDescription="Ảnh sự cố"
-        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input_modern"
+        android:contentDescription="Ảnh hiện trường sự cố"
+        android:layout_marginTop="12dp"
         android:visibility="gone"/>
 
 </LinearLayout>

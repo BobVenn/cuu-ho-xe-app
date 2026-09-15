@@ -3,145 +3,204 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@drawable/bg_login">
+    android:background="#F8FAFC">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="28dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TẠO TÀI KHOẢN MỚI"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#D32F2F"
-            android:layout_marginBottom="6dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điền thông tin để đăng ký dịch vụ cứu hộ"
-            android:textSize="14sp"
-            android:textColor="#555555"
-            android:layout_marginBottom="28dp"/>
-
-        <EditText
-            android:id="@+id/edtFullName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Họ và tên"
-            android:inputType="textPersonName"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="14dp" />
-
-        <EditText
-            android:id="@+id/edtPhone"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Số điện thoại"
-            android:inputType="phone"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="14dp" />
-
-        <EditText
-            android:id="@+id/edtLicensePlate"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Biển số xe (VD: 30F-123.45)"
-            android:inputType="textCapCharacters"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="14dp" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Loại phương tiện:"
-            android:textSize="14sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="6dp" />
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_modern"
+            android:padding="24dp"
+            android:elevation="6dp">
 
-        <RadioGroup
-            android:id="@+id/rgVehicleType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="14dp">
-
-            <RadioButton
-                android:id="@+id/rbMotorbike"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Xe máy"
-                android:checked="true"/>
+                android:text="TẠO TÀI KHOẢN MỚI"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#DC2626"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"/>
 
-            <RadioButton
-                android:id="@+id/rbCar"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ô tô"/>
+                android:text="Điền thông tin để đăng ký dịch vụ cứu hộ xe"
+                android:textSize="13sp"
+                android:textColor="#64748B"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"/>
 
-            <RadioButton
-                android:id="@+id/rbTruck"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Xe tải"/>
-        </RadioGroup>
+                android:text="Họ và tên"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="4dp" />
 
-        <EditText
-            android:id="@+id/edtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Mật khẩu"
-            android:inputType="textPassword"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="14dp" />
+            <EditText
+                android:id="@+id/edtFullName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập họ và tên"
+                android:inputType="textPersonName"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="14dp" />
 
-        <EditText
-            android:id="@+id/edtConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Xác nhận mật khẩu"
-            android:inputType="textPassword"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="24dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="4dp" />
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:text="ĐĂNG KÝ"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:backgroundTint="#D32F2F"
-            android:textColor="#FFFFFF"/>
+            <EditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập số điện thoại"
+                android:inputType="phone"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="14dp" />
 
-        <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đã có tài khoản? Đăng nhập"
-            android:textColor="#1976D2"
-            android:textSize="15sp"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:focusable="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Biển số xe"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="4dp" />
 
+            <EditText
+                android:id="@+id/edtLicensePlate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Ví dụ: 30F-123.45"
+                android:inputType="textCapCharacters"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loại phương tiện"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="6dp" />
+
+            <RadioGroup
+                android:id="@+id/rgVehicleType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbMotorbike"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xe máy"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/rbCar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ô tô"/>
+
+                <RadioButton
+                    android:id="@+id/rbTruck"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xe tải"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Tối thiểu 6 ký tự"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Xác nhận mật khẩu"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/edtConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập lại mật khẩu"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="24dp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="ĐĂNG KÝ TÀI KHOẢN"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_button_primary"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã có tài khoản? Đăng nhập"
+                android:textColor="#2563EB"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

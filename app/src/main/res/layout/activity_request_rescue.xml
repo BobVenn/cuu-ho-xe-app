@@ -2,195 +2,212 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F6F8">
+    android:background="#F8FAFC">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="YÊU CẦU CỨU HỘ"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#D32F2F"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="6dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nhập vị trí và tình trạng phương tiện của bạn"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Loại sự cố / Dịch vụ:"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp"/>
-
-        <Spinner
-            android:id="@+id/spServiceType"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/bg_input"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:layout_marginBottom="18dp"/>
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_modern"
+            android:padding="24dp"
+            android:elevation="6dp">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Vị trí hiện tại của bạn:"
+                android:text="YÊU CẦU CỨU HỘ"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#DC2626"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xác nhận vị trí và thông tin sự cố phương tiện"
+                android:textSize="13sp"
+                android:textColor="#64748B"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại sự cố / Dịch vụ"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="6dp"/>
+
+            <Spinner
+                android:id="@+id/spServiceType"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginBottom="18dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Vị trí hiện tại của bạn"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#334155"/>
+
+                <Button
+                    android:id="@+id/btnGetLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="📍 Định vị GPS"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_secondary"
+                    android:textColor="#2563EB"
+                    android:paddingHorizontal="12dp"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nhập địa chỉ hoặc bấm nút để tự lấy vị trí"
+                android:inputType="textMultiLine"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại liên hệ"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/edtContactPhone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Số điện thoại nhận cuộc gọi"
+                android:inputType="phone"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ghi chú chi tiết"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/edtNote"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Mô tả cụ thể sự cố (VD: Xe nổ lốp bánh trước bên phải...)"
+                android:gravity="top|start"
+                android:padding="12dp"
+                android:background="@drawable/bg_input_modern"
+                android:textSize="14sp"
+                android:layout_marginBottom="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hình ảnh hiện trường / Xe bị sự cố"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="8dp"/>
+
+            <ImageView
+                android:id="@+id/imgRescuePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/bg_input_modern"
+                android:scaleType="centerInside"
+                android:contentDescription="Ảnh hiện trường sự cố"
+                android:src="@drawable/ic_messages"
+                android:padding="40dp"
+                android:layout_marginBottom="12dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="28dp">
+
+                <Button
+                    android:id="@+id/btnTakePhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:text="📷 Chụp ảnh"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_secondary"
+                    android:textColor="#334155"
+                    android:layout_marginEnd="6dp"/>
+
+                <Button
+                    android:id="@+id/btnChooseGallery"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:text="🖼️ Thư viện"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_secondary"
+                    android:textColor="#334155"
+                    android:layout_marginStart="6dp"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSubmitRescue"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="GỬI YÊU CẦU CỨU HỘ"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_button_primary"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="HỦY BỎ"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="#333333"/>
+                android:background="@drawable/bg_button_secondary"
+                android:textColor="#64748B"/>
 
-            <Button
-                android:id="@+id/btnGetLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="📍 Lấy vị trí GPS"
-                android:textSize="12sp"
-                android:backgroundTint="#1976D2"
-                android:textColor="#FFFFFF"
-                android:paddingHorizontal="10dp"/>
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/edtLocation"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Nhập địa chỉ hoặc bấm nút để tự lấy vị trí"
-            android:inputType="textMultiLine"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="18dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số điện thoại liên hệ:"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/edtContactPhone"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Số điện thoại nhận cuộc gọi"
-            android:inputType="phone"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="18dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ghi chú chi tiết:"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/edtNote"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:hint="Mô tả cụ thể sự cố (VD: Xe nổ lốp bánh trước bên phải...)"
-            android:gravity="top|start"
-            android:padding="12dp"
-            android:background="@drawable/bg_input"
-            android:layout_marginBottom="18dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hình ảnh hiện trường / Xe bị sự cố:"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp"/>
-
-        <ImageView
-            android:id="@+id/imgRescuePhoto"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@drawable/bg_input"
-            android:scaleType="centerInside"
-            android:contentDescription="Ảnh hiện trường sự cố"
-            android:src="@drawable/ic_messages"
-            android:padding="40dp"
-            android:layout_marginBottom="10dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="28dp">
-
-            <Button
-                android:id="@+id/btnTakePhoto"
-                android:layout_width="0dp"
-                android:layout_height="46dp"
-                android:layout_weight="1"
-                android:text="📷 Chụp ảnh"
-                android:textSize="13sp"
-                android:backgroundTint="#455A64"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="6dp"/>
-
-            <Button
-                android:id="@+id/btnChooseGallery"
-                android:layout_width="0dp"
-                android:layout_height="46dp"
-                android:layout_weight="1"
-                android:text="🖼️ Thư viện"
-                android:textSize="13sp"
-                android:backgroundTint="#607D8B"
-                android:textColor="#FFFFFF"
-                android:layout_marginStart="6dp"/>
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnSubmitRescue"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:text="GỬI YÊU CẦU CỨU HỘ"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:backgroundTint="#D32F2F"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="12dp"/>
-
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="HỦY BỎ"
-            android:backgroundTint="#78909C"
-            android:textColor="#FFFFFF"/>
-
     </LinearLayout>
 </ScrollView>

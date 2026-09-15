@@ -1,70 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="28dp"
-    android:gravity="center"
-    android:background="@drawable/bg_login">
+    android:fillViewport="true"
+    android:background="#F8FAFC">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CỨU HỘ XE 24/7"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="#D32F2F"
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đăng nhập để gửi yêu cầu cứu hộ khẩn cấp"
-        android:textSize="14sp"
-        android:textColor="#555555"
-        android:layout_marginBottom="36dp"/>
-
-    <EditText
-        android:id="@+id/edtPhone"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:hint="Số điện thoại"
-        android:inputType="phone"
-        android:background="@drawable/bg_input"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_marginBottom="16dp" />
-
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:background="@drawable/bg_input"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_marginBottom="24dp" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:text="ĐĂNG NHẬP"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:backgroundTint="#D32F2F"
-        android:textColor="#FFFFFF"/>
-
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chưa có tài khoản? Đăng ký ngay"
-        android:textColor="#1976D2"
-        android:textSize="15sp"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        android:focusable="true"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
 
-</LinearLayout>
+        <!-- App Hero Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_card_modern"
+            android:padding="28dp"
+            android:elevation="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🚨"
+                android:textSize="48sp"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CỨU HỘ XE 24/7"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#DC2626"
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng nhập để gửi yêu cầu cứu hộ nhanh nhất"
+                android:textSize="13sp"
+                android:textColor="#64748B"
+                android:gravity="center"
+                android:layout_marginBottom="32dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Nhập số điện thoại"
+                android:inputType="phone"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="15sp"
+                android:layout_marginBottom="18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Nhập mật khẩu"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="15sp"
+                android:layout_marginBottom="28dp" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="ĐĂNG NHẬP"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_button_primary"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa có tài khoản? Đăng ký ngay"
+                android:textColor="#2563EB"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="22dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
